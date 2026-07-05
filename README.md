@@ -1,4 +1,4 @@
-# Malicious Prompting Research Framework
+# JLF-Malicious-Prompting
 
 > **Author:** jakeloai  
 > **Purpose:** Defensive security education — understanding how attackers construct malicious prompts vs. how professionals engineer secure prompts  
@@ -33,7 +33,7 @@ This repo teaches all three.
 ## Repository Structure
 
 ```
-malicious-prompting-research/
+JLF-Malicious-Prompting/
 ├── README.md                              ← You are here
 ├── DISCLAIMER.md                          ← Legal & ethical notice
 │
