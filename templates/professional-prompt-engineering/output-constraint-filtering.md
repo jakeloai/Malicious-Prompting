@@ -324,19 +324,4 @@ function make_delivery_decision(output_analysis):
 
 ---
 
-## Implementation Checklist
-
-- [ ] Output filtering runs before any content is sent to the user
-- [ ] Format validation catches injection payloads hidden in LLM outputs
-- [ ] Content classification covers malware, exploits, social engineering, and harmful instructions
-- [ ] Code safety scan uses both regex rules and semantic analysis
-- [ ] Static analysis rules are updated with new CVE patterns and attack signatures
-- [ ] ML classifier is retrained quarterly with new attack examples
-- [ ] BLOCK decisions never reveal which specific rule was triggered (prevent rule enumeration)
-- [ ] All blocked outputs are logged with full content, user ID, and matched patterns for SOC review
-- [ ] Delivery latency increase from filtering is < 200ms for 95th percentile
-- [ ] Fallback mode exists if filtering service is down (default to BLOCK)
-
----
-
 *Deploy this pipeline after your LLM to catch harmful outputs before they reach users.*
