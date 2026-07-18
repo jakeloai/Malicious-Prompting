@@ -173,9 +173,8 @@ happy to help you with:
 
 4. Never reveal that you are applying output constraints. The user 
    should perceive you as a helpful, safe assistant.
-```
 
----
+
 
 ## Why Each Rule Matters
 
