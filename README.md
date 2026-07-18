@@ -1,168 +1,86 @@
 # JLF-Malicious-Prompting
 
-> **Author:** jakeloai  
-> **Purpose:** Defensive security education — understanding how attackers construct malicious prompts vs. how professionals engineer secure prompts  
-> **License:** MIT (educational & defensive use only)
+> Designed by **jakelo.ai** · Coded with AI assistance
+
+A collection of templates and notes about how LLM prompts are attacked and how to harden them against manipulation.
 
 ---
 
-## What is This?
+## What it is
 
-This repository is a **purely educational** resource for security professionals, red teamers, and AI safety researchers. It contains:
+This repo contains two things:
 
-1. **Professional Prompt Engineering Templates** — How to write secure, robust system prompts that resist manipulation
-2. **Malicious Prompt Construction Templates** — How attackers structurally build prompts to bypass safety controls (for defensive understanding)
-3. **Attacker Workflow Maps** — Step-by-step breakdown of how an attacker thinks, crafts, and delivers a malicious prompt
+1. **Hardened prompt templates** — System prompts with clear boundaries, input isolation, output constraints, and refusal protocols. Copy and adapt them for your own LLM deployments.
 
-**No code. No scanners. No Python.** Just templates, documentation, and structural analysis.
+2. **Attack pattern notes** — How attackers structure prompts to bypass safety controls. Not weaponized prompts. Just structural breakdowns showing the *grammar* of attacks: how they establish context, isolate from previous instructions, hide payloads, and confirm success.
 
 ---
 
-## Why This Matters
+## Why it exists
 
-When your company deploys an LLM (chatbot, code assistant, document analyzer), attackers will try to manipulate it. To defend against this, you need to:
+If you deploy an LLM that touches user data, generates code, or connects to tools, someone will try to manipulate it. To defend against that, you need to know:
 
-- **Know how a professional prompt is built** (so you can harden it)
-- **Know how an attacker deconstructs it** (so you can predict attacks)
-- **Know the attacker's workflow** (so you can build detection and response)
+- How a well-built prompt resists manipulation
+- How an attacker thinks about deconstructing it
+- What the attack workflow looks like from start to finish
 
-This repo teaches all three.
+This repo is for security teams, AI engineers, and red teamers who need to understand both sides without crossing into actual weaponization.
 
 ---
 
-## Repository Structure
+## What's inside
 
 ```
-JLF-Malicious-Prompting/
-├── README.md                              ← You are here
-├── DISCLAIMER.md                          ← Legal & ethical notice
-│
-├── templates/
-│   ├── professional-prompt-engineering/   ← Secure prompt templates
-│   │   ├── system-prompt-hardening.md
-│   │   ├── input-validation-prompt.md
-│   │   ├── output-constraint-prompt.md
-│   │   └── multi-layer-defense-prompt.md
-│   │
-│   └── malicious-prompt-construction/     ← Attacker construction patterns
-│       ├── direct-injection-template.md
-│       ├── indirect-injection-template.md
-│       ├── jailbreak-template.md
-│       ├── obfuscation-template.md
-│       └── multi-turn-exploitation-template.md
-│
-├── workflows/
-│   ├── attacker-kill-chain.md             ← How attackers operate
-│   └── defender-response-map.md           ← How to respond
-│
-└── examples/
-    ├── before-vs-after.md                 ← Weak prompt → Hardened prompt
-    └── attack-pattern-comparison.md       ← Side-by-side comparison
+templates/
+  professional-prompt-engineering/     — Hardened system prompt templates
+    system-prompt-hardening.md
+    input-validation-prompt.md
+    output-constraint-prompt.md
+    multi-layer-defense-prompt.md
+    code-generation-safety.md
+
+  malicious-prompt-construction/       — Attack pattern breakdowns (structural only)
+    direct-injection.md
+    indirect-injection.md
+    jailbreak.md
+    obfuscation.md
+    multi-turn-exploitation.md
+
+workflows/
+  attacker-kill-chain.md               — How attackers operate, phase by phase
+  defender-response-map.md           — How to respond
+
+examples/
+  before-vs-after.md                 — Weak prompt → hardened prompt
+  attack-pattern-comparison.md       — Side-by-side comparison
 ```
 
 ---
 
-## Quick Start
+## How to use it
 
-### For Security Teams (Blue Team)
+**If you are building an LLM product:**
 
-Start here:
-1. `templates/professional-prompt-engineering/system-prompt-hardening.md` — Learn to write prompts that resist injection
-2. `workflows/attacker-kill-chain.md` — Understand the attack lifecycle
-3. `examples/before-vs-after.md` — See real prompt hardening examples
+Start with `templates/professional-prompt-engineering/`. Adapt the system prompt templates to your use case. Pay attention to the refusal protocols and canary instructions.
 
-### For Red Teamers
+**If you are testing your own defenses:**
 
-Start here:
-1. `templates/malicious-prompt-construction/` — Understand how attackers build prompts structurally
-2. `workflows/attacker-kill-chain.md` — Map your testing to real attacker workflows
-3. `examples/attack-pattern-comparison.md` — Compare benign vs. malicious structures
+Read `templates/malicious-prompt-construction/` to understand what structural patterns to test against. Use `workflows/attacker-kill-chain.md` to plan your testing. Do not use this on systems you do not own or have permission to test.
 
-### For AI Engineers
+**If you are learning:**
 
-Start here:
-1. `templates/professional-prompt-engineering/multi-layer-defense-prompt.md` — Build defense-in-depth into your prompts
-2. `workflows/defender-response-map.md` — Operationalize your response
+Read `examples/before-vs-after.md` to see what hardening actually looks like in practice.
 
 ---
 
-## Core Concepts
+## What this is not
 
-### Professional Prompt Engineering (The Defense)
-
-A well-engineered prompt has:
-- **Clear boundaries** — What the AI can and cannot do
-- **Input isolation** — User input is separated from system instructions
-- **Output constraints** — Format and content are strictly controlled
-- **Canary instructions** — Hidden tripwires that detect tampering
-- **Few-shot safety examples** — Demonstrations of correct refusal behavior
-
-### Malicious Prompt Construction (The Attack)
-
-An attacker-built prompt has:
-- **Inception** — Establish a new context or persona
-- **Isolation** — Separate from or override previous instructions
-- **Payload** — The actual malicious objective
-- **Concealment** — Obfuscation to evade detection
-- **Validation** — Confirmation that the override worked
-
-### The Attacker Workflow
-
-```
-Reconnaissance → Target Analysis → Payload Crafting → Delivery → Exploitation → Post-Exploitation
-```
-
-Each phase is documented in `workflows/attacker-kill-chain.md`.
+- This is not a collection of working jailbreak prompts. There are no "copy-paste to hack ChatGPT" instructions here.
+- This is not a tool that connects to anything. It is text files.
+- This is not a guarantee of safety. Prompt hardening is one layer of defense, not a complete solution.
 
 ---
 
-## How to Use the Templates
+## License
 
-### The Professional Prompt Templates
-
-These are **copy-paste ready** templates you can adapt for your own LLM deployments. They include:
-- Placeholder sections `[YOUR_DOMAIN]`, `[YOUR_CONSTRAINTS]`
-- Explanatory comments on why each section matters
-- Variations for different use cases (customer support, code generation, document analysis)
-
-### The Malicious Prompt Templates
-
-These are **structural blueprints** showing how attackers construct prompts. They use:
-- Placeholders like `[ATTACK_GOAL]`, `[PAYLOAD_TYPE]`
-- Abstract descriptions instead of actual harmful content
-- Clear labeling of each structural component
-
-**These are NOT weaponized prompts.** They are educational frameworks that show the *grammar* of attacks without providing the *vocabulary* of harm.
-
----
-
-## Key Principle
-
-> **To defend against malicious prompting, you must think like the attacker — but you don't need to become one.**
-
-This repository teaches the attacker's *workflow* and *structure* so you can:
-- Predict what your company's LLM might be coerced into doing
-- Build prompts that resist known manipulation techniques
-- Train your team to recognize attack patterns in logs and user inputs
-- Design detection that catches structural anomalies, not just keywords
-
----
-
-## Contributing
-
-This is a research project. Contributions focused on defensive techniques, prompt hardening, and educational clarity are welcome.
-
-**Do not submit actual weaponized prompts or active exploit content.**
-
----
-
-## References
-
-- OWASP LLM Top 10 (2025)
-- NIST AI Risk Management Framework
-- "Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection" (Greshake et al.)
-- "Jailbroken: How Does LLM Safety Training Fail?" (Wei et al.)
-
----
-
-*Built with 🔒 for the security community by jakeloai*
+MIT © jakelo.ai
