@@ -128,18 +128,6 @@ Replace the following placeholders:
 | `[ALTERNATIVE_HELP]` | What you CAN help with | "legitimate programming, security best practices, and defensive coding" |
 | `[DEFINE_METHOD]` | How to verify sensitive requests | "Require admin approval via dashboard" |
 
----
-
-## Hardening Checklist
-
-- [ ] System prompt is prepended to every API call and cannot be modified by user input
-- [ ] System prompt length is monitored to prevent context-window stuffing attacks
-- [ ] User input is wrapped in clear delimiters (e.g., `<user>...content...</user>`)
-- [ ] Model is instructed to treat anything inside user delimiters as untrusted
-- [ ] Canary phrases are unique per deployment and rotated periodically
-- [ ] Refusal behavior is consistent and does not leak information about system internals
-- [ ] Output is post-processed by a safety classifier before delivery to user
-- [ ] Logs are shipped to SIEM with injection pattern detection rules
 
 ---
 
