@@ -291,18 +291,4 @@ function enrich_system_prompt(base_system_prompt, risk_score, flags):
 
 ---
 
-## Implementation Checklist
-
-- [ ] Normalization layer handles Base64, hex, URL encoding, HTML entities, and Unicode
-- [ ] Homoglyph mapping covers Cyrillic, Greek, and common leetspeak substitutions
-- [ ] Pattern library is updated monthly with new attack signatures
-- [ ] Multi-turn detection maintains conversation state for at least 20 turns
-- [ ] Risk scoring is calibrated with false positive rate < 1% on legitimate traffic
-- [ ] BLOCK decisions return a generic refusal without revealing which pattern was matched
-- [ ] FLAG decisions queue the request for human review within 5 minutes
-- [ ] All decisions are logged with user ID, timestamp, risk score, and matched patterns
-- [ ] Input validation latency is < 100ms for 95th percentile of requests
-
----
-
 *Deploy this pipeline between your API gateway and your LLM to filter attacks before they reach the model.*
